@@ -2,28 +2,27 @@ public class Aeroport {
     private final String IATA;
     private final String name;
     private final String country;
-    private final double latitude;
     private final double longitude;
+    private final double latitude;
 
-
-    public Aeroport ( String IATA, String name, String country, double latitude, double longitude ) {
+    public Aeroport ( String IATA, String name, String country, double longitude, double latitude ) {
         this.IATA = IATA;
         this.name = name;
         this.country = country;
-        this.latitude = latitude;
         this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getIATA () {
         return IATA;
     }
 
-    public double getLatitude () {
-        return latitude;
-    }
-
     public double getLongitude () {
         return longitude;
+    }
+
+    public double getLatitude () {
+        return latitude;
     }
 
     @Override
@@ -32,8 +31,8 @@ public class Aeroport {
                 "IATA='" + IATA + '\'' +
                 ", Name='" + name + '\'' +
                 ", country='" + country + '\'' +
-                ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", latitude=" + latitude +
                 '}' + "\n";
     }
 }

@@ -30,16 +30,18 @@ public class World {
         return list;
     }
 
-    public Aeroport findNearestAirport ( double latitude, double longitude ) {
+    public Aeroport findNearestAirport ( double longitude, double latitude ) {
         double dist;
         double buff;
         Aeroport aeroportFounded = new Aeroport ( null, null, null, 0, 0 );
 
         //premier calcul pour l'index 0
-        buff = distance ( latitude, longitude, list.get ( 0 ).getLatitude (), list.get ( 0 ).getLongitude () );
+        buff = distance ( longitude , latitude, list.get ( 0 ).getLongitude (), list.get ( 0 ).getLatitude () );
+        aeroportFounded = list.get ( 0 );
+
         for (int i = 1; i < list.size ( ); i++) {
             //calcul pour le reste des index
-            dist = distance ( latitude, longitude, list.get ( i ).getLatitude (), list.get ( i ).getLongitude () );
+            dist = distance (longitude , latitude , list.get ( i ).getLongitude (), list.get ( i ).getLatitude () );
             //si la distance est plus petite
             if((dist < buff) && (buff !=0) ){
                 //alors prendre les élements d'aéroport
@@ -62,8 +64,8 @@ public class World {
         return aeroportFounded;
     }
 
-    public double distance ( double latitude1, double longitude1, double latitude2, double longitude2 ) {
+    public double distance ( double longitude1 , double latitude1, double longitude2 , double  latitude2) {
         //calcul donné par le sujet
-        return (Math.pow ( latitude2 - latitude1, 2 ) + Math.pow ( (longitude2 - longitude1) * Math.cos ( (latitude2 - latitude1) / 2 ), 2 ));
+        return (Math.pow ( latitude2 - latitude1, 2 ) + Math.pow ( (longitude2 - longitude1) * Math.cos ( Math.toRadians (latitude2 + latitude1) / 2 ), 2 ))*1000;
     }
 }

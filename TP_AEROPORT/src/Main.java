@@ -17,5 +17,11 @@ public class Main {
         //System.out.println ( cdg );
         //System.out.println ( distanceCDG );
 
+        //System.out.println ( w.findNearestAirport ( 51.24, -7.01 ) ); //Test seychelles
+
+        Interface app = new Interface ();
+        app.main(null);
+
+
     }
 }
