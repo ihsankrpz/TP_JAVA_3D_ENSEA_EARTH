@@ -1,6 +1,10 @@
 public class Main {
     public static void main ( String[] args ) {
 
-        System.out.println ( "This is a first test to try if Git and IntellijIdea can work together" );
+        // TO TEST AEROPORT
+        Aeroport aeroport = new Aeroport ( "CDG","Charle de Gaule", "France",49.009691,2.547925 );
+        System.out.println ( aeroport );
+
+
     }
 }
