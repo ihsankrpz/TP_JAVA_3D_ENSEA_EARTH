@@ -1,13 +1,14 @@
 public class Aeroport {
-    private String IATA;
-    private String Name;
-    private String country;
-    private double latitude;
-    private double longitude;
+    private final String IATA;
+    private final String name;
+    private final String country;
+    private final double latitude;
+    private final double longitude;
+
 
     public Aeroport ( String IATA, String name, String country, double latitude, double longitude ) {
         this.IATA = IATA;
-        Name = name;
+        this.name = name;
         this.country = country;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -29,10 +30,10 @@ public class Aeroport {
     public String toString () {
         return "Interface{" +
                 "IATA='" + IATA + '\'' +
-                ", Name='" + Name + '\'' +
+                ", Name='" + name + '\'' +
                 ", country='" + country + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                '}';
+                '}' + "\n";
     }
 }
