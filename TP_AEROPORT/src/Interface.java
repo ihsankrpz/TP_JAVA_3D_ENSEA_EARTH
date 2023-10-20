@@ -61,7 +61,6 @@ public class Interface extends Application {
 
                     // Conversion en longitude et lattitude
                     double longitude = 360 * (X - 0.5);
-                    //          double latitude = 2 * Math.atan ( Math.exp ( (0.5 - Y) / 0.2678 ) ) - 90;
                     double latitude = 180 * (-Y + 0.5);
                     // Recherche dans l'objet w de la classe World de l'a´eroport le plus proche.
                     Aeroport aeroport = w.findNearestAirport ( longitude, latitude );

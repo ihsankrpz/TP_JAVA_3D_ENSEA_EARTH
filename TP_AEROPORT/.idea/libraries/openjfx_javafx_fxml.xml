@@ -1,6 +1,9 @@
 <component name="libraryTable">
   <library name="openjfx.javafx.fxml" type="repository">
     <properties maven-id="org.openjfx:javafx-fxml:19.0.2" />
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/libJson/libJson" />
+    </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/javafx-fxml-19.0.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javafx-fxml-19.0.2-win.jar!/" />

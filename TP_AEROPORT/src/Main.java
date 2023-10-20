@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class Main {
     public static void main ( String[] args ) {
 
@@ -22,6 +25,17 @@ public class Main {
         Interface app = new Interface ();
         app.main(null);
 
+        try {
+            World w = new World ("airport-codes_no_comma.csv");
+            BufferedReader br = new BufferedReader(new FileReader ("JsonOrly.txt"));
+            String test = br.readLine();
+            JsonFlightFillerOracle jSonFlightFiller = new JsonFlightFillerOracle(test,w);
 
+            System.out.println(jSonFlightFiller.list);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace ( );
+        }
     }
 }

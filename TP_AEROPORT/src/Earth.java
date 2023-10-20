@@ -34,18 +34,16 @@ public class Earth extends Group {
                 ry.setAngle ( timeElapsed * 24.0 );
             }
         };
-        //animationTimer.start();
+        animationTimer.start();
     }
 
     public Sphere createSphere(Aeroport a,Color color){
         sph = new Sphere ( 2);
         phongMaterial = new PhongMaterial ();
 
-        double X =  301 * Math.cos(Math.toRadians(a.getLatitude ())) * Math.sin(Math.toRadians(a.getLongitude ()));
-        double Y = -301 * Math.sin(Math.toRadians(a.getLatitude ())) + Math.toRadians(a.getLongitude ());
-        double Z = -301 * Math.cos(Math.toRadians(a.getLatitude ())) * Math.cos(Math.toRadians(a.getLongitude ()));
-
-        sph.getTransforms ().add(new Translate ( X, Y, Z));
+        sph.getTransforms ().add(new Translate (0, 0, -300));
+        sph.getTransforms ().add(new Rotate ((-a.getLatitude ()*(60.0/90.0)), 0, 0,300,Rotate.X_AXIS));
+        sph.getTransforms ().add(new Rotate ( -a.getLongitude (), 0, 0,300,Rotate.Y_AXIS ));
 
         phongMaterial.setDiffuseColor ( color );
         sph.setMaterial ( phongMaterial );
