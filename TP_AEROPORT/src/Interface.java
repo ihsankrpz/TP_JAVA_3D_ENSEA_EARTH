@@ -50,30 +50,6 @@ public class Interface extends Application {
             if (event.getButton ( ) == MouseButton.PRIMARY && event.getEventType ( ) == MouseEvent.MOUSE_DRAGGED) {
                 camera.getTransforms ( ).add ( new Translate ( 0, 0, scrollY - event.getSceneY ( ) ) );
             }
-     /*       if (event.getButton ( ) == MouseButton.SECONDARY && event.getEventType ( ) == MouseEvent.MOUSE_CLICKED) {
-                PickResult pickResult = event.getPickResult ( );
-                if (pickResult.getIntersectedNode ( ) != null) {
-
-                    // on r´ecup`ere le point d'intersection
-                    double X = pickResult.getIntersectedNode ( ).getLayoutX ();
-                    double Y = pickResult.getIntersectedNode ( ).getLayoutX ();
-
-                    // Conversion en longitude et lattitude
-                    double longitude = 360 * (X - 0.5);
-                    double latitude = 2 * Math.atan ( Math.exp ( (0.5 - Y) / 0.2678 ) ) - 90;
-
-                    // Recherche dans l'objet w de la classe World de l'a´eroport le plus proche.
-                    Aeroport aeroport = w.findNearestAirport ( longitude, latitude );
-
-                    // Affichage dans la console
-                    System.out.println ( "(X,Y) = ("+X+","+Y+")");
-                    System.out.println(aeroport);
-
-                }
-            }*/
-        });
-
-        theScene.addEventHandler ( MouseEvent.ANY, event -> {
             if (event.getButton ( ) == MouseButton.SECONDARY && event.getEventType ( ) == MouseEvent.MOUSE_CLICKED) {
                 PickResult pickResult = event.getPickResult ( );
                 if (pickResult.getIntersectedNode ( ) != null) {
@@ -85,7 +61,7 @@ public class Interface extends Application {
 
                     // Conversion en longitude et lattitude
                     double longitude = 360 * (X - 0.5);
-          //          double latitude = 2 * Math.atan ( Math.exp ( (0.5 - Y) / 0.2678 ) ) - 90;
+                    //          double latitude = 2 * Math.atan ( Math.exp ( (0.5 - Y) / 0.2678 ) ) - 90;
                     double latitude = 180 * (-Y + 0.5);
                     // Recherche dans l'objet w de la classe World de l'a´eroport le plus proche.
                     Aeroport aeroport = w.findNearestAirport ( longitude, latitude );
@@ -95,9 +71,12 @@ public class Interface extends Application {
                     System.out.println ( "(long,lat) = (" + longitude + "," + latitude + ")" );
                     System.out.println ( aeroport );
 
+                    earth.displayRedSphere ( aeroport );
+
                 }
             }
         });
+
         primaryStage.setScene(theScene);
         primaryStage.show();
     }
