@@ -37,27 +37,36 @@ public class Earth extends Group {
         animationTimer.start();
     }
 
-    public Sphere createSphere(Aeroport a,Color color){
-        sph = new Sphere ( 2);
-        phongMaterial = new PhongMaterial ();
+    public Sphere createSphere(double latitude, double longitude,Color color){
+        PhongMaterial col = new PhongMaterial();
+        col.setSpecularColor(color);
+        col.setDiffuseColor(color);
 
-        sph.getTransforms ().add(new Translate (0, 0, -300));
-        sph.getTransforms ().add(new Rotate ((-a.getLatitude ()*(60.0/90.0)), 0, 0,300,Rotate.X_AXIS));
-        sph.getTransforms ().add(new Rotate ( -a.getLongitude (), 0, 0,300,Rotate.Y_AXIS ));
+        Sphere coloredSphere = new Sphere(5);
+        coloredSphere.setMaterial(col);
 
-        phongMaterial.setDiffuseColor ( color );
-        sph.setMaterial ( phongMaterial );
+        coloredSphere.setTranslateZ(-sph.getRadius());
 
-        return sph;
+        Rotate rPhi = new Rotate (-longitude,
+                -coloredSphere.getTranslateX(),-coloredSphere.getTranslateY(),
+                -coloredSphere.getTranslateZ(),Rotate.Y_AXIS);
+
+        coloredSphere.getTransforms().add(rPhi);
+        Rotate rTheta = new Rotate (-latitude*60.0/90.0,
+                -coloredSphere.getTranslateX(),-coloredSphere.getTranslateY(),
+                -coloredSphere.getTranslateZ(),Rotate.X_AXIS);
+        coloredSphere.getTransforms().add(rTheta);
+
+        return coloredSphere;
     }
 
     public void displayRedSphere(Aeroport a){
-        Sphere sphere = createSphere(a,Color.RED);
-        this.getChildren ().add ( sphere );
+        Sphere redSphere = createSphere(a.getLatitude(),a.getLongitude(),Color.RED);
+        this.getChildren().add(redSphere);
     }
 
     public void displayYellowSphere(Aeroport a){
-        Sphere sphere = createSphere(a,Color.YELLOW);
+        Sphere sphere = createSphere(a.getLatitude (), a.getLongitude (),Color.YELLOW);
         this.getChildren ().add ( sphere );
     }
 

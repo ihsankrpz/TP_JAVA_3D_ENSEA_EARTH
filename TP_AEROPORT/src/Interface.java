@@ -13,6 +13,10 @@ import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
 public class Interface extends Application {
@@ -71,6 +75,18 @@ public class Interface extends Application {
                     System.out.println ( aeroport );
 
                     earth.displayRedSphere ( aeroport );
+
+                    /*HttpClient client = HttpClient.newHttpClient ();
+
+                    HttpRequest request = HttpRequest.newBuilder()
+                            .url( URI.create("http://api.aviationstack.com/v1/flights?access_key=0109c0c8c64f5c85d6fda6577492eeb8"))
+                            .build();
+                    HttpResponse response = client.send(request, HttpResponse.BodyHandler);
+                    JsonFlightFillerOracle json = new JsonFlightFillerOracle(response, w);
+                    listOfFlight = json.list();
+                    json.displayFlight();
+                    earth.displayYellowSphere ( listOfFlight );*/
+
 
                 }
             }

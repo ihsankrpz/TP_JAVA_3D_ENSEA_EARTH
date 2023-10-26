@@ -22,10 +22,11 @@ public class Main {
 
         //System.out.println ( w.findNearestAirport ( 51.24, -7.01 ) ); //Test seychelles
 
+        //EARTH Application
         Interface app = new Interface ();
         app.main(null);
 
-        try {
+        /*try {
             World w = new World ("airport-codes_no_comma.csv");
             BufferedReader br = new BufferedReader(new FileReader ("JsonOrly.txt"));
             String test = br.readLine();
@@ -36,6 +37,6 @@ public class Main {
         }
         catch (Exception e) {
             e.printStackTrace ( );
-        }
+        }*/
     }
 }
